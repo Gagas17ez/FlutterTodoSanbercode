@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:poi_poi_todo/database/database.dart';
-import 'package:poi_poi_todo/models/note_model.dart';
+import 'database.dart';
+import 'note_model.dart';
 
 import 'add_note_screen.dart';
 
@@ -34,13 +34,14 @@ class _HomeScreenState extends State<HomeScreen> {
         horizontal: 10.0,
       ),
       child: Card(
+        color: Colors.grey[700],
         elevation: 2.0,
         child: ListTile(
           title: Text(
             note.title!,
             style: TextStyle(
               fontSize: 18.0,
-              color: Colors.black,
+              color: Colors.blue[300],
               decoration: note.status == 0
                   ? TextDecoration.none
                   : TextDecoration.lineThrough,
@@ -50,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
             '${_dateFormatter.format(note.date!)} - ${note.priority}',
             style: TextStyle(
               fontSize: 15.0,
-              color: Colors.black38,
+              color: Colors.blue[300],
               decoration: note.status == 0
                   ? TextDecoration.none
                   : TextDecoration.lineThrough,
@@ -64,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Navigator.pushReplacement(
                   context, MaterialPageRoute(builder: (_) => HomeScreen()));
             },
-            activeColor: Theme.of(context).primaryColor,
+            activeColor: Colors.blue[300],
             value: note.status == 1 ? true : false,
           ),
           onTap: () {
@@ -86,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey.shade900,
       floatingActionButton: FloatingActionButton(
         backgroundColor: Theme.of(context).primaryColor,
         onPressed: () {
@@ -101,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         child: Icon(
           Icons.add,
-          color: Colors.white,
+          color: Colors.blue[300],
         ),
       ),
       body: FutureBuilder(
@@ -124,15 +125,15 @@ class _HomeScreenState extends State<HomeScreen> {
               itemBuilder: (BuildContext context, int index) {
                 if (index == 0) {
                   return Padding(
-                    padding: EdgeInsets.fromLTRB(20.0, 30.0, 10.0, 5.0),
+                    padding: EdgeInsets.fromLTRB(20.0, 70.0, 10.0, 5.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Poi Poi Todo',
+                          'Todo Flutter',
                           style: TextStyle(
-                            color: Colors.lightBlueAccent.shade200,
-                            fontSize: 20.0,
+                            color: Colors.blue[300],
+                            fontSize: 30.0,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -140,9 +141,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 5.0,
                         ),
                         Text(
-                          '$completeNoteCount of ${snapshot.data.length} task is complete',
+                          '$completeNoteCount dari ${snapshot.data.length} tugas Terselesaikan',
                           style: TextStyle(
-                            color: Colors.lightBlueAccent.shade100,
+                            color: Colors.blue[300],
                             fontSize: 14.0,
                             fontWeight: FontWeight.w600,
                           ),

@@ -11,13 +11,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Poi Poi Todo',
+      title: 'Todo Flutter',
       theme: ThemeData(
-        primarySwatch: Colors.lightBlue,
+        primarySwatch: Colors.grey,
       ),
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),
     );
   }
 }
-
