@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'database.dart';
-import 'note_model.dart';
+import 'package:poi_poi_todo/screens/profile_page.dart';
+import '../db&models/database.dart';
+import '../db&models/note_model.dart';
 
 import 'add_note_screen.dart';
 
@@ -88,8 +89,45 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade900,
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30.0),
+          topRight: Radius.circular(30.0),
+        ),
+        child: BottomNavigationBar(
+          backgroundColor: Colors.grey[700],
+          onTap: (value) {
+            if (value == 0) {
+              Route route =
+                  MaterialPageRoute(builder: (context) => ProfilePage());
+              Navigator.of(context).push(route);
+            } else if (value == 1) {
+              Route route =
+                  MaterialPageRoute(builder: (context) => HomeScreen());
+              Navigator.of(context).push(route);
+            } else if (value == 2) {
+              // Route route = MaterialPageRoute(builder: (context) => account());
+              // Navigator.of(context).push(route);
+            }
+          },
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Account',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: 'Search',
+            ),
+          ],
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Colors.grey[700],
         onPressed: () {
           Navigator.push(
             context,
@@ -110,7 +148,9 @@ class _HomeScreenState extends State<HomeScreen> {
           builder: (context, AsyncSnapshot snapshot) {
             if (!snapshot.hasData) {
               return Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  color: Colors.grey[700],
+                ),
               );
             }
 

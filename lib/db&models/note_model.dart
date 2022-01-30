@@ -1,5 +1,4 @@
-class Note{
-
+class Note {
   int? id;
   String? title;
   DateTime? date;
@@ -10,11 +9,10 @@ class Note{
 
   Note.withId({this.id, this.title, this.date, this.priority, this.status});
 
+  Map<String, dynamic> toMap() {
+    final map = Map<String, dynamic>();
 
-  Map<String,dynamic> toMap(){
-    final map = Map<String,dynamic>();
-
-    if(id != null){
+    if (id != null) {
       map['id'] = id;
     }
     map['title'] = title;
@@ -24,7 +22,7 @@ class Note{
     return map;
   }
 
-  factory Note.fromMap(Map<String,dynamic> map){
+  factory Note.fromMap(Map<String, dynamic> map) {
     return Note.withId(
       id: map['id'],
       title: map['title'],
@@ -33,5 +31,4 @@ class Note{
       status: map['status'],
     );
   }
-
 }
