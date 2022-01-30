@@ -62,7 +62,7 @@ class _ProfilePageState extends State<ProfilePage> {
               label: 'Account',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person),
+              icon: Icon(Icons.logout),
               label: 'Logout',
             ),
           ],
@@ -172,7 +172,7 @@ class _ProfilePageState extends State<ProfilePage> {
           const SizedBox(height: 1),
           Container(
               width: 350,
-              height: 95,
+              height: 150,
               decoration: BoxDecoration(
                   border: Border(
                       bottom: BorderSide(
