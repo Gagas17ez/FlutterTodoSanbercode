@@ -1,9 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:poi_poi_todo/screens/LoginScreen.dart';
 import 'database.dart';
 import 'note_model.dart';
-
+import 'accout_screen.dart';
 import 'add_note_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -84,9 +86,81 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  Future<void> _signOut() async {
+    await FirebaseAuth.instance.signOut();
+  }
+
+  loginSubmit(email, password) async {
+    try {
+      _firebaseAuth
+          .signInWithEmailAndPassword(email: email, password: password)
+          .then((value) => Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => HomeScreen())));
+    } catch (e) {
+      print(e);
+      SnackBar(
+        content: Text(e.toString()),
+      );
+    }
+  }
+
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    String email = "";
+    if (auth.currentUser != null) {
+      print(auth.currentUser!.email);
+      email = auth.currentUser!.email.toString();
+    }
+    //else {
+    //   _signOut().then((value) => Navigator.of(context).pushReplacement(
+    //       MaterialPageRoute(builder: (context) => LoginPage())));
+    // }
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (value) {
+          if (value == 2) {
+            Route route = MaterialPageRoute(builder: (context) => LoginPage());
+            //Navigator.of(context).pushReplacement(route);
+            _signOut()
+                .then((value) => Navigator.of(context).pushReplacement(route));
+          }
+          if (value == 1) {
+            Route route =
+                MaterialPageRoute(builder: (context) => Account(email: email));
+            //Navigator.of(context).pushReplacement(route);
+            _signOut()
+                .then((value) => Navigator.of(context).pushReplacement(route));
+          }
+          //else if (value == 1) {
+          //     Route route = MaterialPageRoute(builder: (context) => search());
+          //     Navigator.of(context).push(route);
+          //   } else if (value == 2) {
+          //     Route route = MaterialPageRoute(builder: (context) => account());
+          //     Navigator.of(context).push(route);
+          //   }
+        },
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.search),
+          //   label: 'Search',
+          // ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Account',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Logout',
+          ),
+        ],
+      ),
       backgroundColor: Colors.grey.shade900,
       floatingActionButton: FloatingActionButton(
         backgroundColor: Theme.of(context).primaryColor,
@@ -129,6 +203,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        SizedBox(
+                          height: 40,
+                        ),
                         Text(
                           'Todo Flutter',
                           style: TextStyle(
