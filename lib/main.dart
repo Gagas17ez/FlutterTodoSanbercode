@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:poi_poi_todo/screens/home_screen.dart';
+import 'package:poi_poi_todo/screens/login_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -16,7 +21,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.grey,
       ),
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: LoginPage(),
     );
   }
 }
