@@ -59,7 +59,7 @@ class _LoginScreenState extends State<LoginPage> {
                   padding: EdgeInsets.all(10),
                   margin: const EdgeInsets.only(top: 40),
                   child: Text(
-                    'Latihan Auth',
+                    'Todo Flutter',
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       color: Colors.blue[300],
