@@ -5,7 +5,7 @@ import 'package:poi_poi_todo/screens/profile_page.dart';
 import 'database/database.dart';
 import 'models/note_model.dart';
 
-import 'models/add_note_screen.dart';
+import 'add_note_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override

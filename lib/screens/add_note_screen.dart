@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import '../database/database.dart';
-import 'note_model.dart';
-import '../home_screen.dart';
+import 'database/database.dart';
+import 'models/note_model.dart';
+import 'home_screen.dart';
 
 class AddNoteScreen extends StatefulWidget {
   final Note? note;
@@ -168,7 +168,7 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
                           ),
                           child: TextFormField(
                             style: TextStyle(
-                              color: Colors.blue[300],
+                              color: Colors.white,
                               fontSize: 18.0,
                             ),
                             decoration: InputDecoration(
@@ -196,7 +196,7 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
                             controller: _dateController,
                             onTap: _handleDatePicker,
                             style: TextStyle(
-                              color: Colors.blue[300],
+                              color: Colors.white,
                               fontSize: 18.0,
                             ),
                             decoration: InputDecoration(
@@ -224,7 +224,7 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
                                 child: Text(
                                   priority,
                                   style: TextStyle(
-                                    color: Colors.blue[300],
+                                    color: Colors.grey[600],
                                     fontSize: 18.0,
                                   ),
                                 ),

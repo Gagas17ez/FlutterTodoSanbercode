@@ -36,6 +36,7 @@ class EditPhoneFormPageState extends State<EditPhoneFormPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.grey.shade800,
         appBar: buildAppBar(context),
         body: Form(
           key: _formKey,
@@ -46,9 +47,11 @@ class EditPhoneFormPageState extends State<EditPhoneFormPage> {
                 SizedBox(
                     width: 320,
                     child: const Text(
-                      "What's Your Phone Number?",
-                      style:
-                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                      "No Telepon",
+                      style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.lightBlue),
                     )),
                 Padding(
                     padding: EdgeInsets.only(top: 40),
@@ -56,30 +59,36 @@ class EditPhoneFormPageState extends State<EditPhoneFormPage> {
                         height: 100,
                         width: 320,
                         child: TextFormField(
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
                           // Handles Form Validation
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please enter your phone number';
+                              return 'Masukkan no tlp anda';
                             } else if (isAlpha(value)) {
-                              return 'Only Numbers Please';
+                              return 'No tlp hanya angka';
                             } else if (value.length < 10) {
-                              return 'Please enter a VALID phone number';
+                              return 'Masukkan no tlp valid';
                             }
                             return null;
                           },
                           controller: phoneController,
                           decoration: const InputDecoration(
-                            labelText: 'Your Phone Number',
-                          ),
+                              labelText: 'No Telepon Anda',
+                              labelStyle: TextStyle(color: Colors.blueAccent)),
                         ))),
                 Padding(
-                    padding: EdgeInsets.only(top: 150),
+                    padding: EdgeInsets.only(top: 130),
                     child: Align(
                         alignment: Alignment.bottomCenter,
                         child: SizedBox(
                           width: 320,
                           height: 50,
                           child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.grey[900],
+                            ),
                             onPressed: () {
                               // Validate returns true if the form is valid, or false otherwise.
                               if (_formKey.currentState!.validate() &&
@@ -90,7 +99,8 @@ class EditPhoneFormPageState extends State<EditPhoneFormPage> {
                             },
                             child: const Text(
                               'Update',
-                              style: TextStyle(fontSize: 15),
+                              style: TextStyle(
+                                  fontSize: 17, color: Colors.lightBlue),
                             ),
                           ),
                         )))

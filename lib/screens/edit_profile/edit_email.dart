@@ -31,6 +31,7 @@ class EditEmailFormPageState extends State<EditEmailFormPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.grey.shade800,
         appBar: buildAppBar(context),
         body: Form(
           key: _formKey,
@@ -41,10 +42,11 @@ class EditEmailFormPageState extends State<EditEmailFormPage> {
                 SizedBox(
                     width: 320,
                     child: const Text(
-                      "What's your email?",
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.left,
+                      "Email",
+                      style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.lightBlue),
                     )),
                 Padding(
                     padding: EdgeInsets.only(top: 40),
@@ -52,25 +54,32 @@ class EditEmailFormPageState extends State<EditEmailFormPage> {
                         height: 100,
                         width: 320,
                         child: TextFormField(
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
                           // Handles Form Validation
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please enter your email.';
+                              return 'Masukkan email anda';
                             }
                             return null;
                           },
                           decoration: const InputDecoration(
-                              labelText: 'Your email address'),
+                              labelText: 'Email Anda',
+                              labelStyle: TextStyle(color: Colors.lightBlue)),
                           controller: emailController,
                         ))),
                 Padding(
-                    padding: EdgeInsets.only(top: 150),
+                    padding: EdgeInsets.only(top: 130),
                     child: Align(
                         alignment: Alignment.bottomCenter,
                         child: SizedBox(
                           width: 320,
                           height: 50,
                           child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.grey[900],
+                            ),
                             onPressed: () {
                               // Validate returns true if the form is valid, or false otherwise.
                               if (_formKey.currentState!.validate() &&
@@ -82,7 +91,8 @@ class EditEmailFormPageState extends State<EditEmailFormPage> {
                             },
                             child: const Text(
                               'Update',
-                              style: TextStyle(fontSize: 15),
+                              style: TextStyle(
+                                  fontSize: 17, color: Colors.lightBlue),
                             ),
                           ),
                         )))

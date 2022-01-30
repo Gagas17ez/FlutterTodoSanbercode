@@ -32,6 +32,7 @@ class EditNameFormPageState extends State<EditNameFormPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.grey.shade800,
         appBar: buildAppBar(context),
         body: Form(
           key: _formKey,
@@ -42,10 +43,11 @@ class EditNameFormPageState extends State<EditNameFormPage> {
               SizedBox(
                   width: 330,
                   child: const Text(
-                    "What's Your Name?",
+                    "Nama",
                     style: TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
+                      color: Colors.lightBlue,
                     ),
                   )),
               Row(
@@ -58,17 +60,21 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                           height: 100,
                           width: 150,
                           child: TextFormField(
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
                             // Handles Form Validation for First Name
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return 'Please enter your first name';
+                                return 'Masukkan nama awal anda';
                               } else if (!isAlpha(value)) {
-                                return 'Only Letters Please';
+                                return 'Nama hanya alphabet';
                               }
                               return null;
                             },
-                            decoration:
-                                InputDecoration(labelText: 'First Name'),
+                            decoration: InputDecoration(
+                                labelText: 'First Name',
+                                labelStyle: TextStyle(color: Colors.lightBlue)),
                             controller: firstNameController,
                           ))),
                   Padding(
@@ -77,6 +83,9 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                           height: 100,
                           width: 150,
                           child: TextFormField(
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
                             // Handles Form Validation for Last Name
                             validator: (value) {
                               if (value == null || value.isEmpty) {
@@ -86,20 +95,25 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                               }
                               return null;
                             },
-                            decoration:
-                                const InputDecoration(labelText: 'Last Name'),
+                            decoration: const InputDecoration(
+                                labelText: 'Last Name',
+                                labelStyle: TextStyle(color: Colors.lightBlue)),
+
                             controller: secondNameController,
                           )))
                 ],
               ),
               Padding(
-                  padding: EdgeInsets.only(top: 150),
+                  padding: EdgeInsets.only(top: 130),
                   child: Align(
                       alignment: Alignment.bottomCenter,
                       child: SizedBox(
                         width: 330,
                         height: 50,
                         child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.grey[900],
+                          ),
                           onPressed: () {
                             // Validate returns true if the form is valid, or false otherwise.
                             if (_formKey.currentState!.validate() &&
@@ -113,7 +127,8 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                           },
                           child: const Text(
                             'Update',
-                            style: TextStyle(fontSize: 15),
+                            style: TextStyle(
+                                fontSize: 17, color: Colors.lightBlue),
                           ),
                         ),
                       )))

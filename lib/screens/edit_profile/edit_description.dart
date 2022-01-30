@@ -27,6 +27,7 @@ class _EditDescriptionFormPageState extends State<EditDescriptionFormPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.grey.shade800,
         appBar: buildAppBar(context),
         body: Form(
           key: _formKey,
@@ -35,24 +36,29 @@ class _EditDescriptionFormPageState extends State<EditDescriptionFormPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 SizedBox(
-                    width: 350,
+                    width: 310,
                     child: const Text(
-                      "What type of passenger\nare you?",
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                      "Description Diri",
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.lightBlue),
                     )),
                 Padding(
                     padding: EdgeInsets.all(20),
                     child: SizedBox(
-                        height: 250,
+                        height: 220,
                         width: 350,
                         child: TextFormField(
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
                           // Handles Form Validation
                           validator: (value) {
                             if (value == null ||
                                 value.isEmpty ||
                                 value.length > 200) {
-                              return 'Please describe yourself but keep it under 200 characters.';
+                              return 'Desc tidak boleh kosong dan kurang dari 200';
                             }
                             return null;
                           },
@@ -61,19 +67,22 @@ class _EditDescriptionFormPageState extends State<EditDescriptionFormPage> {
                           decoration: const InputDecoration(
                               alignLabelWithHint: true,
                               contentPadding:
-                                  EdgeInsets.fromLTRB(10, 15, 10, 100),
+                                  EdgeInsets.fromLTRB(10, 10, 10, 80),
                               hintMaxLines: 3,
-                              hintText:
-                                  'Write a little bit about yourself. Do you like chatting? Are you a smoker? Do you bring pets with you? Etc.'),
+                              hintText: 'Masukkan deskripsi tentang diri anda',
+                              hintStyle: TextStyle(color: Colors.lightBlue)),
                         ))),
                 Padding(
-                    padding: EdgeInsets.only(top: 50),
+                    padding: EdgeInsets.only(top: 0),
                     child: Align(
                         alignment: Alignment.bottomCenter,
                         child: SizedBox(
-                          width: 350,
+                          width: 320,
                           height: 50,
                           child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.grey[900],
+                            ),
                             onPressed: () {
                               // Validate returns true if the form is valid, or false otherwise.
                               if (_formKey.currentState!.validate()) {
@@ -83,7 +92,8 @@ class _EditDescriptionFormPageState extends State<EditDescriptionFormPage> {
                             },
                             child: const Text(
                               'Update',
-                              style: TextStyle(fontSize: 15),
+                              style: TextStyle(
+                                  fontSize: 17, color: Colors.lightBlue),
                             ),
                           ),
                         )))
