@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:poi_poi_todo/screens/login_screen.dart';
-import 'package:poi_poi_todo/screens/profile_page.dart';
+import 'package:poi_sanber_todo/screens/login_screen.dart';
+import 'package:poi_sanber_todo/screens/profile_page.dart';
 import 'database/database.dart';
 import 'models/note_model.dart';
 

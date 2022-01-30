@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:poi_poi_todo/screens/home_screen.dart';
-import 'package:poi_poi_todo/screens/login_screen.dart';
+import 'package:poi_sanber_todo/screens/home_screen.dart';
+import 'package:poi_sanber_todo/screens/login_screen.dart';
 import 'edit_profile/edit_description.dart';
 import 'edit_profile/edit_email.dart';
 import 'edit_profile/edit_image.dart';

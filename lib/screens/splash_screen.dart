@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:poi_poi_todo/screens/login_screen.dart';
+import 'package:poi_sanber_todo/screens/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
