@@ -15,12 +15,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Todo Flutter',
+      title: 'Poi Poi Todo',
       theme: ThemeData(
-        primarySwatch: Colors.grey,
+        primarySwatch: Colors.lightBlue,
       ),
       debugShowCheckedModeBanner: false,
       home: LoginPage(),
     );
   }
 }
+
