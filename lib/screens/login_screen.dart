@@ -7,24 +7,6 @@ import 'package:flutter/material.dart';
 //import 'package:sanberappflutter/Tugas/Tugas15/HomeScreen.dart';
 import 'home_screen.dart';
 
-//void main() => runApp(const loginPage());
-
-// class loginPage extends StatelessWidget {
-//   const loginPage({Key? key}) : super(key: key);
-
-//   static const String _title = 'Sample App';
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: _title,
-//       home: Scaffold(
-//         body: const MyStatefulWidget(),
-//       ),
-//     );
-//   }
-// }
-
 class LoginPage extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -67,6 +49,7 @@ class _LoginScreenState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.grey.shade900,
         body: Padding(
             padding: const EdgeInsets.all(10),
             child: ListView(
@@ -79,7 +62,7 @@ class _LoginScreenState extends State<LoginPage> {
                     'Latihan Auth',
                     style: TextStyle(
                       fontFamily: 'Poppins',
-                      color: Colors.blueAccent,
+                      color: Colors.blue[300],
                       fontWeight: FontWeight.w600,
                       fontSize: 43,
                     ),
@@ -96,16 +79,24 @@ class _LoginScreenState extends State<LoginPage> {
                 Container(
                     padding: EdgeInsets.all(10),
                     child: TextField(
+                      style: TextStyle(color: Colors.white),
                       controller: _emailController,
                       decoration: InputDecoration(
-                          border: OutlineInputBorder(), labelText: "Email"),
+                        border: OutlineInputBorder(),
+                        labelText: "Email",
+                        labelStyle: TextStyle(color: Colors.white),
+                      ),
                     )),
                 Container(
                     padding: EdgeInsets.all(10),
                     child: TextField(
+                      style: TextStyle(color: Colors.white),
                       controller: _passwordController,
                       decoration: InputDecoration(
-                          border: OutlineInputBorder(), labelText: "Password"),
+                        border: OutlineInputBorder(),
+                        labelText: "Password",
+                        labelStyle: TextStyle(color: Colors.white),
+                      ),
                     )),
                 TextButton(onPressed: () {}, child: Text("Forgot Password")),
                 Container(

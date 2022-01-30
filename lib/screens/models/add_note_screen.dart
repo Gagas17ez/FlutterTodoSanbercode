@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'database.dart';
+import '../database/database.dart';
 import 'note_model.dart';
-import 'home_screen.dart';
+import '../home_screen.dart';
 
 class AddNoteScreen extends StatefulWidget {
   final Note? note;
