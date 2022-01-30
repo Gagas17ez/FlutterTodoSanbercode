@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:poi_poi_todo/screens/login_screen.dart';
 import 'package:poi_poi_todo/screens/profile_page.dart';
 import 'database/database.dart';
 import 'models/note_model.dart';
 
 import 'add_note_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart' as fbAuth;
+import 'package:firebase_core/firebase_core.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -85,6 +88,10 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  Future<void> _signOut() async {
+    await fbAuth.FirebaseAuth.instance.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,6 +111,9 @@ class _HomeScreenState extends State<HomeScreen> {
               Route route =
                   MaterialPageRoute(builder: (context) => ProfilePage());
               Navigator.of(context).push(route);
+            } else if (value == 2) {
+              _signOut().then((value) => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => LoginPage())));
             }
           },
           items: const <BottomNavigationBarItem>[
@@ -114,6 +124,10 @@ class _HomeScreenState extends State<HomeScreen> {
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
               label: 'Account',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.logout),
+              label: 'Logout',
             ),
           ],
         ),
