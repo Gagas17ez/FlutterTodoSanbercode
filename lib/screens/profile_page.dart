@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:poi_poi_todo/screens/home_screen.dart';
+import 'package:poi_poi_todo/screens/login_screen.dart';
 import 'edit_profile/edit_description.dart';
 import 'edit_profile/edit_email.dart';
 import 'edit_profile/edit_image.dart';
@@ -10,6 +11,8 @@ import 'edit_profile/edit_phone.dart';
 import 'database/user.dart';
 import 'database/user_data.dart';
 import 'widget/display_image_widget.dart';
+import 'package:firebase_auth/firebase_auth.dart' as fbAuth;
+import 'package:firebase_core/firebase_core.dart';
 
 // This class handles the Page to dispaly the user's info on the "Edit Profile" Screen
 class ProfilePage extends StatefulWidget {
@@ -18,6 +21,10 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  Future<void> _signOut() async {
+    await fbAuth.FirebaseAuth.instance.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = UserData.myUser;
@@ -40,6 +47,9 @@ class _ProfilePageState extends State<ProfilePage> {
               Route route =
                   MaterialPageRoute(builder: (context) => ProfilePage());
               Navigator.of(context).push(route);
+            } else if (value == 2) {
+              _signOut().then((value) => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => LoginPage())));
             }
           },
           items: const <BottomNavigationBarItem>[
@@ -50,6 +60,10 @@ class _ProfilePageState extends State<ProfilePage> {
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
               label: 'Account',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Logout',
             ),
           ],
         ),
@@ -63,7 +77,7 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           Center(
               child: Padding(
-                  padding: EdgeInsets.only(bottom: 30, top: 50),
+                  padding: EdgeInsets.only(bottom: 30, top: 10),
                   child: Text(
                     'Profile Account',
                     style: TextStyle(

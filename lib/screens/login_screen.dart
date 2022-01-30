@@ -55,16 +55,16 @@ class _LoginScreenState extends State<LoginPage> {
             child: ListView(
               children: <Widget>[
                 Container(
-                  alignment: Alignment.center,
+                  alignment: Alignment.centerLeft,
                   padding: EdgeInsets.all(10),
                   margin: const EdgeInsets.only(top: 40),
                   child: Text(
-                    'Todo Flutter',
+                    'Sign in to start:',
                     style: TextStyle(
                       fontFamily: 'Poppins',
                       color: Colors.blue[300],
-                      fontWeight: FontWeight.w600,
-                      fontSize: 43,
+                      fontWeight: FontWeight.w300,
+                      fontSize: 30,
                     ),
                   ),
                 ),
@@ -92,13 +92,16 @@ class _LoginScreenState extends State<LoginPage> {
                     child: TextField(
                       style: TextStyle(color: Colors.white),
                       controller: _passwordController,
+                      obscureText: true,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: "Password",
                         labelStyle: TextStyle(color: Colors.white),
                       ),
                     )),
-                TextButton(onPressed: () {}, child: Text("Forgot Password")),
+                SizedBox(
+                  height: 20,
+                ),
                 Container(
                   height: 50,
                   padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -111,7 +114,7 @@ class _LoginScreenState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Container(
                   height: 50,
@@ -161,8 +164,8 @@ class _LoginScreenState extends State<LoginPage> {
 }
 
 final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
-    onPrimary: Colors.grey[300],
-    primary: Colors.blue[300],
+    onPrimary: Colors.grey[200],
+    primary: Colors.blue[900],
     minimumSize: Size(88, 36),
     padding: EdgeInsets.symmetric(horizontal: 16),
     shape: const RoundedRectangleBorder(
